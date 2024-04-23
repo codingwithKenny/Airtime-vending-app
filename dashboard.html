@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./CSS/dashboard.css">
+
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div id="navside" class="navbars">
+               
+                <div id="realtop" class="top">
+                    <img src="../images/roylogo-removebg-preview.png" alt="" class="logo">
+                    <h1 class="text">ROYTech</h1><i id="menubar" class="fa-solid fa-bars"></i>
+                </div>
+                <ul id="menubarul">
+                    <li active><i class="fa-solid fa-house-user"></i><a class="navtext" href="">Dashboard</a></li>
+                    <li><i class="fa-solid fa-phone-flip"></i><a id="airtimepage" class="navtext" href="">Buy Airtime</a></li>
+                    <li><i class="fa-solid fa-signal"></i><a class="navtext" href="">Buy Data</a></li>
+                    <li id="wallet"><i class="fa-solid fa-money-bills"></i><a class="navtext" href="">Fund Wallet <i id="dropdownicon"
+                                class="fa-solid fa-caret-down"></i>
+                            <ul id="dropdown">
+                                <li id="gateway"><a href="./checkpaystack.html">Fund with payment Gateway</a></li>
+                                
+                            </ul>
+                        </a></li>
+
+                    <li><i class="fa-solid fa-circle-question"></i><a href="">FAQ's</a></li>
+                    <li id="logout"><i class="fa-solid fa-right-from-bracket"></i><a href="">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="hide">
+                <div class="tophide">
+                    <i class="fa-solid fa-ellipsis-vertical" id="hidemenu"></i>
+                </div>
+                <ul class="ulhide">
+                    <li active><i class="fa-solid fa-house-user"></i></li>
+                    <li><i class="fa-solid fa-phone-flip"></i></li>
+                    <li><i class="fa-solid fa-signal"></i></li>
+                    <li ><i id="fundhide" class="fa-solid fa-money-bills"></i></li>
+
+                    <li><i class="fa-solid fa-circle-question"></i></li>
+                    <li ><i class="fa-solid fa-right-from-bracket"></i>
+                    </li>
+                </ul>
+
+            </div>
+            <div id="modal">
+
+            </div>
+
+            <div class="maincontent" id="main">
+                <div class="maintop">
+                    <h1 class="welcometext" id="textwelcome">WELCOME TO ROYTech</h1>
+                    <p id="ptextwelcome">Refer a friend TODAY and Enjoy our Amazing price of #500 and 10% on every time he or she Fund his
+                        Account</p>
+                </div>
+
+                <div class="profile">
+                    <div>
+                        <p class="gooddaytext1">Good day,<span id="userName"></span></p>
+                        <p class="profilepicbox"><img src="../images/female avatar.png" alt="" class="profilepic"></p>
+                        <p class="gooddaytext2" id="username"></p>
+                        <p id="account"></p>
+                        <p class="account" id="accountname"></p>
+
+                    </div>
+
+                    <div class="card1" id="cardbox">
+
+                        <span class="spancard">
+                            <i class="fa-solid fa-wallet"></i>
+                            <h3>Wallet Balance</h3>
+                            <p>#0.0</p>
+                        </span>
+
+                        <span class="spancard">
+                            <i class="fa-solid fa-coins"></i>
+                            <h3>Refer Balance</h3>
+                            <p>#0.0</p>
+                        </span>
+
+                        <span class="spancard">
+                            <i class="fa-solid fa-user-group"></i>
+                            <h3>Total Referral</h3>
+                            <p>0</p>
+                        </span>
+
+                    </div>
+                </div>
+
+                <marquee behavior="scroll" direction="left" scrollamount="5" scrolldelay="100">
+                    <img src="../images/mtn.webp" alt="" class="network">
+                    <img src="../images/mobile.jpg" alt="" class="network">
+                    <img src="../images/glo.jpg" alt="" class="network">
+                    <img src="../images/airtel.jpg" alt="" class="network">
+
+                </marquee>
+                <div class="airtime">
+                    <div>
+                        <h1>Anything Airtime,<br> Anywhere & Anytime</h1>
+                        <p>Buy, Transfer Airtime, Settle bills, Fund Third-Party wallet,<br> Convert Airtime To Cash,
+                            Convert any Airtime to fund mobile money wallet; <br>MTN momo and Airtel smart cash</p>
+                        <button>Buy Airtime</button>
+                    </div>
+                    <p class="circle"><img src="../images/airtime.svg" height="100px" class="image2"></p>
+                </div>
+
+            </div>
+
+        </nav>
+    </header>
+    <footer>
+        <div class="footerup">
+            <img src="../images/roylogo.jpg" alt="" class="logofooter">
+            <div><i class="fa-brands fa-instagram"></i> <i class="fa-brands fa-x-twitter"></i></div>
+            <p>© 2020 Mindshare Communications. All Rights Reserved</p>
+        </div>
+        <div class="down">
+            <div>
+                <a href="">HOME</a>
+                <a href="">ABOUT US</a>
+                <a href="">DOCUMENTATION</a>
+            </div>
+            <div>
+                <a href=""><i class="fa-solid fa-envelope"></i> INFO@ROYTECHATGMAIL.COM</a>
+                <a href=""><i class="fa-solid fa-phone"></i> +234-8106114218</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, getDoc, doc, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAA75YqrIVKDFF-O97XaEhpTCRTPDTFg-E",
+            authDomain: "airtime-30477.firebaseapp.com",
+            projectId: "airtime-30477",
+            storageBucket: "airtime-30477.appspot.com",
+            messagingSenderId: "727260064796",
+            appId: "1:727260064796:web:76e0048d7249afd9d383d9",
+            measurementId: "G-9KMHS49LGR"
+        };
+
+
+
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app)
+        const usersRef = collection(db, 'userDetails')
+        const colRef = collection(db, 'userAccountDetails')
+        const auth = getAuth(app)
+        let currentUserId
+        // CHECK IF THE USER IS LOGGED IN OR OUT
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                showModalMessage("welcome")
+
+                 
+                
+               
+                
+
+            } else {
+                window.location.href = 'http://127.0.0.1:5500/login.html'
+
+            }
+            // DISPLAY DETAIL ON UI
+
+            
+            airtimepage.addEventListener('click',(e)=>{
+                e.preventDefault()
+                console.log(currentUserId, 'mee');
+                    window.location.href = `http://127.0.0.1:5500/Airtime.html?id=${currentUserId}`
+                })
+
+            if (user.email) {
+                await getCurrentUserAccount(user.email)
+                await getCurrentUser(user.email)
+              
+                
+
+
+            }
+
+        })
+
+        // GET ACCOUNT DETAILS FROM FIRESTORE
+
+        async function getCurrentUserAccount(email) {
+
+            const q = query(colRef, where("ref", "==", email))
+            try {
+                const querySnapshot = await getDocs(q);
+                if (querySnapshot.empty) {
+                    console.log("No matching documents.");
+                    return;
+                }
+
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    const data = { ...doc.data() }
+                    console.log(data);
+                    account.innerHTML = `
+                   
+                    <p>Account Number:<h1>${data.accountNumber}</h1></p>`
+
+                    return { id: doc.id, data: doc.data() }
+                });
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+
+        // GET USER DETAILS FROM FIRE STORE
+
+        async function getCurrentUser(email) {
+            const q = query(usersRef, where("emailAddress", "==", email));
+
+            try {
+                const querySnapshot = await getDocs(q);
+                if (querySnapshot.empty) {
+                    console.log("No matching documents.");
+                    return;
+                }
+
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.id, " => ", doc.data());
+                    const data = { ...doc.data(), id:doc.id }
+                    currentUserId= doc.id
+                    console.log(data);
+                    userName.innerHTML = ` ${data.userName}`
+
+                    accountname.innerHTML = `
+                   
+                    <p>Account Name:<h1>Roy-${data.userName}</h1></p>
+                    `
+
+                });
+
+            } catch (error) {
+
+            }
+            
+        }
+            
+
+        //           LOGOUT   
+        function handleLogOut() {
+
+            try {
+                signOut(auth)
+                    .then(() => {
+                        window.location.href = 'http://127.0.0.1:5500/login.html';
+                    })
+                    .catch((error) => {
+                        console.error('Error signing out:', error);
+                    });
+            } catch (error) {
+                console.error('Error:', error);
+            }
+
+        }
+
+        logout.addEventListener('click', handleLogOut)
+
+
+
+
+
+        //      TO SHOW MODAL
+        function showModalMessage(message) {
+            modal.style.display = 'block'
+            modal.style.transform = 'scale(1.2)';
+            modal.innerHTML = `<div>
+        <h3 id="massagetext">${message}</h3>
+        <button  id="modalbtn" >Okay</button>
+
+        </div>`
+            modalbtn.addEventListener('click', async () => {
+
+                modal.style.display = 'none'
+
+            })
+        }
+        wallet.addEventListener('click', (e) => {
+            e.preventDefault()
+
+            if (dropdown.style.display == 'none') {
+                dropdown.style.display = "block"
+
+            } else {
+                dropdown.style.display = "none"
+            }
+
+
+
+
+        })
+        gateway.addEventListener('click', () => {
+            window.location.href = "http://127.0.0.1:5500/checkpaystack.html"
+        })
+
+
+        let mymenubar = document.getElementById('menubar')
+    
+        mymenubar.addEventListener('click', ()=>{
+            navside.style.display = 'none'
+
+            if( navside.style.display == "none"){
+               
+                hide.style.display = "block"
+                main.style.marginLeft = '50px'
+                cardbox.style.marginLeft = '150px'
+                textwelcome.style.marginLeft = '400px'
+                ptextwelcome.style.marginLeft = '300px'
+            }else{
+                navside.style.display = 'block'
+            }
+             })
+             let mybar = document.getElementById('hidemenu')
+
+             mybar.addEventListener('click', ()=>{
+                if (navside.style.display == "none") {
+                    hide.style.display = 'none'
+                    navside.style.display = "block"
+                    main.style.marginLeft = '350px'
+                cardbox.style.marginLeft = '10px'
+                    
+                }else{
+                    navside.style.display = 'block'
+                }
+             })
+
+
+
+    </script>
+</body>
+
+</html>

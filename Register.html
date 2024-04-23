@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+     <!-- FONT AWESOME -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    body {
+        background-color: whitesmoke;
+    }
+
+    .container {
+        width: 400px;
+        margin: 20px auto;
+        box-shadow: 3px 5px 3px 5px rgba(0, 0, 0, 0.2);
+        background-color: white;
+        font-family: "Lato", sans-serif;
+        color: black;
+        font-size: 14px;
+
+    }
+
+    #signupform {
+        padding: 20px 0;
+        margin-left: 30px;
+    }
+
+    input {
+        width: 300px;
+        height: 25px;
+        margin-top: 10px;
+        border: thin solid rgb(244, 237, 237);
+
+    }
+
+    input:focus {
+        outline: thin solid skyblue;
+
+    }
+
+    #check {
+        width: 15px;
+        outline: 0;
+    }
+
+    #signupbtn {
+        width: 80px;
+        height: 40px;
+        border-radius: 10px;
+        border: 0;
+        padding-right: 35px;
+        background-color: palevioletred;
+        margin-top: 30px;
+    }
+
+    .container .text {
+        margin-left: 80px;
+    }
+
+    .container h4 {
+        color: palevioletred;
+        margin-left: 50px;
+        font-size: 25px;
+        padding-top: 30px;
+    }
+    #icon2 {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid palevioletred;
+            margin-left: 80px;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+            margin-top: -100px;
+            display: none;
+        }
+
+            @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+            }
+
+            @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+            }
+</style>
+
+<body>
+    <div class="container">
+        <h4>CREATE AN ACCOUNT</h4>
+        <form id="signupform">
+
+            <label for="fullname">FULL NAME</label><br>
+            <input type="text" id="fullname"><br><br>
+
+            <label for="username">USER NAME</label><br>
+            <input type="text" id="username"><br><br>
+            <p id="icon2"></p>
+
+            <label for="phonenumber">PHONE NUMBER</label><br>
+            <input type="number" id="phonenumber"><br><br>
+            
+
+            <label for="email">EMAIL</label><br>
+            <input type="email" id="email"><br><br>
+
+            <label for="password">Password</label><br>
+            <input type="password" id="password"><br><br>
+
+            <input type="checkbox" id="check" required>I agree with Terms and condition <br>
+
+            <input type="submit" value="SIGN UP" id="signupbtn">
+        </form>
+        <p class="text">Already a Member? <a href="./login.html">Sign in</a></p>
+    </div>
+
+    <!-- JAVASCRIPT CODE -->
+
+
+    <script type="module">
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore,collection,addDoc,getDocs} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getAuth,createUserWithEmailAndPassword,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyAA75YqrIVKDFF-O97XaEhpTCRTPDTFg-E",
+          authDomain: "airtime-30477.firebaseapp.com",
+          projectId: "airtime-30477",
+          storageBucket: "airtime-30477.appspot.com",
+          messagingSenderId: "727260064796",
+          appId: "1:727260064796:web:76e0048d7249afd9d383d9",
+          measurementId: "G-9KMHS49LGR"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app)
+        const colRef = collection(db , 'userDetails')
+        const   colref = collection(db, 'userAccountDetails')
+        let detailsStored = []
+
+        const auth = getAuth(app)
+
+        async function form(e){
+            e.preventDefault()
+
+            icon2.style.display = 'block'
+
+            let fullName = fullname.value
+            let userName = username.value
+            let emailAddress = email.value
+            let phoneNumber = phonenumber.value
+            let passWord = password.value
+            
+            let  accountNumber ='05'+ Math.floor(Math.random()*123456789)
+        
+        
+
+            let userDetails ={
+                fullName,
+                userName,
+                emailAddress,
+                phoneNumber
+            }
+            let acct = {
+                ref : emailAddress,
+                accountNumber,
+                
+            }
+          
+            try {
+                
+                const signUp = await createUserWithEmailAndPassword(auth,emailAddress,passWord)
+               
+                const res = await addDoc(colRef, userDetails)
+                  if(signUp){
+                    alert('registration sucessful')
+                    window.location.href = 'http://127.0.0.1:5500/dashboard.html'
+                    icon2.style.display = 'none'
+                  }
+
+               const res2 = await addDoc(colref, acct)
+               console.log(res2)
+
+            
+           
+                
+         
+
+                
+            } catch (error) {
+                console.log(error);
+                if (emailAddress == "") {
+                    showModalMessage('please input a valid Email')
+                } else if (passWord == "") {
+                    showModalMessage('please input your pin')
+                } else if (!emailAddress || !passWord) {
+                    showModalMessage(error.message.slice(21))
+                }
+                
+            }
+        
+
+        }
+        signupform.addEventListener('submit', form)
+
+       
+
+
+
+        function show(){
+            console.log(window.location.href)
+        }
+        show()
+      </script>
+       <script>
+      
+      function showModalMessage(message) {
+            modal.style.display = 'block'
+            modal.style.transform = 'scale(1.2)';
+            modal.innerHTML = `
+        <h3 id="massagetext">${message}</h3>
+        <button id="modalbtn" onclick="handleokay()" >Okay</button>
+
+        `
+
+        }
+
+        function handleokay() {
+            modal.style.display = 'none'
+            icon2.style.display = 'none'
+
+        }
+
+    </script>
+
+    
+
+
+
+
+
+
+
+</body>
+
+</html>
